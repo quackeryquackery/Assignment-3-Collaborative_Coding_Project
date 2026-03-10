@@ -1,5 +1,11 @@
-public class Main {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Game Start!");
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Game game = new Game();
+        game.play();
+        // Add reset -- replay capability
     }
 }
