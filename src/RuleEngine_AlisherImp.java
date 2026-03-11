@@ -10,23 +10,27 @@ public class RuleEngine
             {"paper", "rock"} //paper beats rock
     };
 
-    public RuleEngine()
+    static
     {
         possibleChoices.put(1, "Rock");
         possibleChoices.put(2, "Paper");
         possibleChoices.put(3, "Scissors");
-        // Add choices as need be...
+        //Add choices as need be...
     }
 
-    public String availableChoices()
+    public static String availableChoices()
     {
+        if (possibleChoices.isEmpty())
+        {
+            return "()";
+        }
         String output = "(";
         for (Integer key : possibleChoices.keySet())
         {
-            output = output.concat(key+"="+possibleChoices.get(key)+", ");
+            output += key + "=" + possibleChoices.get(key) + ", ";
         }
         output = output.substring(0, output.length() - 2); //Remove trailing comma
-        output = output.concat(")");
+        output += ")";
         return output; //Currently returns >> (1=Rock, 2=Paper, 3=Scissors)
     }
 
@@ -35,7 +39,7 @@ public class RuleEngine
         return possibleChoices.get(choice); //If user inputs 1, returns Rock, and so on...
     }
 
-    public int getVictor(String p1Choice, String p2Choice) {
+    public static int getVictor(String p1Choice, String p2Choice) {
         if (p1Choice.equalsIgnoreCase(p2Choice)) {
             return 0; //draw
         }
