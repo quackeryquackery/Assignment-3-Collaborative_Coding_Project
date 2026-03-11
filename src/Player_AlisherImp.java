@@ -1,12 +1,20 @@
 public abstract class Player {
     protected String name;
+    protected boolean hiddenStatus;
 
-    public Player(String name) {
+    public Player(String name)
+    {
         this.name = name;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
+    }
+
+    public void updateHidden(boolean val)
+    {
+        hiddenStatus = val;
     }
 
     public abstract String makeMove();
@@ -18,10 +26,9 @@ class HumanPlayer extends Player
         super(name);
     }
 
-    @Override
-    public String makeMove() {
-        //Move("Human");
-        return "";
+    public String makeMove()
+    {
+        return Move.makeHumanDecision(hiddenStatus);
     }
 }
 
@@ -31,23 +38,9 @@ class ComputerPlayer extends Player
     {
         super(name);
     }
-    @Override
-    public String makeMove() {
-        //Move("AI");
-        return "";
-    }
-}
-
-class RandomPlayer extends Player
-{
-    public RandomPlayer(String name)
+    public String makeMove()
     {
-        super(name);
-    }
-    @Override
-    public String makeMove() {
-        //Move("Random");
-        return "";
+        return Move.makeComputerDecision();
     }
 }
 
@@ -59,12 +52,9 @@ class PlayerFactory {
         else if (type.equalsIgnoreCase("AI")) {
             return new ComputerPlayer(name);
         }
-        else if (type.equalsIgnoreCase("Random Player")) {
-            return new RandomPlayer(name);
-        }
+        //Add other player types as necessary...
         else {
             throw new IllegalArgumentException("Unknown player type: " + type);
         }
     }
 }
-
