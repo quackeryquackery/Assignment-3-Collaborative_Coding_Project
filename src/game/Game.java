@@ -77,8 +77,8 @@ public class Game
                 p1Decision = p1.makeMove();
                 p2Decision = p2.makeMove();
                 //To differentiate the two players without repeating a descriptor like "Human" or "You" as an example
-                player1Name = "Player.Player 1";
-                player2Name = "Player.Player 2";
+                player1Name = "Player 1";
+                player2Name = "Player 2";
                 System.out.print(player1Name + " chose: " + p1Decision + ". " + player2Name + " chose: " + p2Decision);
             }
             else //Different player types
@@ -94,4 +94,5 @@ public class Game
         System.out.println("\nGame Over. The final scores are as follows...");
         showCurrentScore();
     }
+
 }
