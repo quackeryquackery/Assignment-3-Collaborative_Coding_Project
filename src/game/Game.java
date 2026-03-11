@@ -20,9 +20,6 @@ public class Game
 
         player1Type = "Human";
         player2Type = "AI";
-
-        p1 = PlayerFactory.createPlayer(player1Type, "Human");
-        p2 = PlayerFactory.createPlayer(player2Type, "Computer");
     }
 
     private void nextRound()
@@ -63,6 +60,9 @@ public class Game
 
     public void play()
     {
+        p1 = PlayerFactory.createPlayer(player1Type, "Human");
+        p2 = PlayerFactory.createPlayer(player2Type, "Computer");
+
         System.out.println("\n");
         String player1Name = p1.getName();
         String player2Name = p2.getName();
@@ -94,5 +94,4 @@ public class Game
         System.out.println("\nGame Over. The final scores are as follows...");
         showCurrentScore();
     }
-
 }
