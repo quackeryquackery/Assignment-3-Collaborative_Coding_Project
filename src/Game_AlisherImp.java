@@ -5,7 +5,6 @@ public class Game
     private int player1Wins, player2Wins, drawGames = 0;
     private boolean checkSamePlayerType;
 
-    RuleEngine engine = new RuleEngine();
     private final String player1Type;
     private final String player2Type;
     Player p1, p2;
@@ -67,7 +66,7 @@ public class Game
 
         while (roundCounter <= totalNumberRounds)
         {
-            System.out.print("Round " + roundCounter + " - Choose " + engine.availableChoices() + ": ");
+            System.out.print("Round " + roundCounter + " - Choose " + RuleEngine.availableChoices() + ": ");
             String p1Decision, p2Decision;
             if (checkSamePlayerType) //In case of two human or non-human players
             {
@@ -84,7 +83,7 @@ public class Game
                 p1Decision = p1.makeMove();
                 p2Decision = p2.makeMove();
             }
-            int winner = engine.getVictor(p1Decision, p2Decision);
+            int winner = RuleEngine.getVictor(p1Decision, p2Decision);
             updateScore(winner, player1Name, player2Name);
             showCurrentScore();
             nextRound();
